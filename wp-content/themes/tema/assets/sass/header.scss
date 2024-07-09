@@ -83,7 +83,7 @@ body {
 
 .text-light {
   --bs-text-opacity: 1;
-  color: rgba(var(--color-light), var(--bs-text-opacity)) !important;
+  color: rgba(#f8f9fa, 1) !important;
 }
 
 .text-uppercase {
@@ -132,17 +132,17 @@ body {
 
 /* Estilos Globais */
 body {
-  font-family: var(--font-primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color: var(--color-text);
-  background-color: var(--color-background);
+  color: #212529;
+  background-color: #ffffff;
 }
 
 /* Cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-secondary);
-  color: var(--color-dark);
+  font-family: 'Georgia', serif;
+  color: #343a40;
   margin-bottom: 1rem;
 }
 
@@ -172,27 +172,27 @@ h6 {
 
 /* Links */
 a {
-  color: var(--color-primary);
+  color: #007bff;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: var(--color-dark);
+  color: #007bff;
   text-decoration: underline;
 }
 
 /* Botões */
 .btn-primary {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: #007bff;
+  border-color: #007bff;
   color: #fff;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background-color: darken(var(--color-primary), 10%);
-  border-color: darken(var(--color-primary), 10%);
+  background-color: darken(#007bff, 10%);
+  border-color: darken(#007bff, 10%);
 }
 
 /* Listas */
@@ -212,7 +212,7 @@ input,
 button,
 textarea,
 select {
-  font-family: var(--font-primary);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem;
 }
 
@@ -227,15 +227,15 @@ th,
 td {
   padding: 0.75rem;
   text-align: left;
-  border-top: 1px solid var(--color-muted);
+  border-top: 1px solid #6c757d;
 }
 
 thead th {
-  border-bottom: 2px solid var(--color-muted);
+  border-bottom: 2px solid #6c757d;
 }
 
 tbody + tbody {
-  border-top: 2px solid var(--color-muted);
+  border-top: 2px solid #6c757d;
 }
 
 /* Responsividade */
@@ -267,11 +267,11 @@ tbody + tbody {
 
 /* Customizações Específicas do Tema */
 .navbar {
-  background-color: var(--color-dark);
+  background-color: #007bff
 }
 
 .navbar-nav .nav-link.open {
-  color: var(--color-dark);
+  color: #007bff
 }
 
 .navbar-nav .nav-link.open:hover,
@@ -281,10 +281,10 @@ tbody + tbody {
 }
 
 .navbar-nav .nav-link.open {
-  border-color: var(--color-muted);
+  border-color: #6c757d;
   border-width: 0;
   border-radius: 0;
-  color: var(--color-muted);
+  color: #6c757d;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -301,7 +301,7 @@ tbody + tbody {
   transform: translateX(-50%);
   width: 0;
   height: 100%;
-  background: var(--color-muted);
+  background: #6c757d;
   z-index: -1;
   transition: width 150ms ease-in-out;
 }
@@ -315,17 +315,17 @@ tbody + tbody {
 }
 
 footer {
-  background-color: var(--color-secondary);
-  color: var(--color-light);
+  background-color: #6c757d;
+  color: #f8f9fa;
   padding: 1rem 0;
 }
 
 footer a {
-  color: var(--color-dark);
+  color: #343a40
 }
 
 footer a:hover {
-  color: var(--color-primary);
+  color: #007bff
 }
 
 /* Carrossel Flickity */
@@ -342,11 +342,11 @@ footer a:hover {
   width: 12px;
   height: 12px;
   opacity: 1;
-  background: var(--color-primary);
+  background: #007bff
 }
 
 .flickity-page-dots .dot.is-selected {
-  background: var(--color-dark);
+  background: #007bff
 }
 
 .nav-item {
@@ -400,7 +400,7 @@ footer a:hover {
   transform: translateX(-50%);
   width: 0;
   height: 100%;
-  background: var(--color-muted);
+  background: #6c757d;
   z-index: -1;
   transition: width 150ms ease-in-out;
-} 
+}

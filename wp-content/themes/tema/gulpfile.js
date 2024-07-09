@@ -25,7 +25,7 @@ gulp.task('compile-dev', () => {
 
 	browser.init(files, { 
 		//server: { baseDir: "./" },
-		proxy: "http://wordpress.local.host/",
+		proxy: "http://starter.local.host/",
 		notify: false
 	})
 
