@@ -1,0 +1,22 @@
+# ignore everything in the root except the "wp-content" directory.
+!wp-content/
+
+# ignore everything in the "wp-content" directory, except:
+# "plugins", "themes", etc directory
+wp-content/*
+!wp-content/plugins/
+!wp-content/themes/
+wp-content/uploads/
+!wp-content/index.php
+
+# ignore node dependency directories
+node_modules/
+wp-config.php
+
+# ignore node dependency directories
+wp-content/themes/iube/node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
