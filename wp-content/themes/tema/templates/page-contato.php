@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Página de Contato
+ * Template Name: Contato
  */
 
 get_header('fixed-dropdown'); ?>

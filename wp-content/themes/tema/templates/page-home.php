@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Página Inicial
+ * Template Name: Home
  */
 
 get_header('fixed-dropdown'); ?>
