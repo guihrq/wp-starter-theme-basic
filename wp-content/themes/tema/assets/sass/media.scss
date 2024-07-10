@@ -1,0 +1,66 @@
+@media (min-width: 992px) {
+  .navbar-nav {
+      margin-left: auto; /* Alinha os itens à direita */
+  }
+
+  .navbar-nav .nav-item {
+      padding: 5px; /* Espaçamento entre os itens do menu */
+      text-align: center;
+  }
+}
+/* Estilização para desktop */
+@media (min-width: 992px) {
+  .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000; /* Z-index alto para sobrepor outros elementos */
+  }
+}
+
+/* Estilização para responsivo (hamburger menu) */
+@media (max-width: 991px) {
+  .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+  }
+
+  /* Ajuste para o conteúdo não começar por baixo do header */
+  body {
+      padding-top: 56px; /* Altura do header no responsivo */
+  }
+
+  .navbar-collapse {
+      max-height: calc(100vh - 56px); /* Altura da tela menos altura do header */
+      overflow-y: auto; /* Adiciona scroll quando necessário */
+  }
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  h1 {
+      font-size: 2rem;
+  }
+
+  h2 {
+      font-size: 1.75rem;
+  }
+
+  h3 {
+      font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  
+}
+
+@media (min-width: 992px) {
+  
+}
+
+@media (min-width: 1200px) {
+  
+}

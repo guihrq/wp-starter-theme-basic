@@ -11,7 +11,7 @@
 ?>
 
 <!-- Footer -->
-<footer class="site-footer bg-light pt-5 pb-3">
+<footer class="site-footer bg-light pt-5">
     <div class="container">
         <div class="row">
             <!-- Sitemap Section -->
@@ -71,8 +71,11 @@
     new WOW().init();
 </script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/jquery.mask.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/flikity.min.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/carrossel.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/forms.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/script.js"></script>
 <?php wp_footer(); ?>
 </body>

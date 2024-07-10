@@ -5,143 +5,24 @@ html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%; }
 
-body {
-  margin: 0; }
-
-/* Variáveis de Fonte e Cores */
-:root {
-  /* Fontes */
-  --font-primary: 'Helvetica Neue', Arial, sans-serif;
-  --font-secondary: 'Georgia', serif;
-  /* Cores */
-  --color-primary: #007bff;
-  /* Azul Bootstrap */
-  --color-secondary: #6c757d;
-  /* Cinza Bootstrap */
-  --color-success: #28a745;
-  /* Verde Bootstrap */
-  --color-danger: #dc3545;
-  /* Vermelho Bootstrap */
-  --color-warning: #ffc107;
-  /* Amarelo Bootstrap */
-  --color-info: #17a2b8;
-  /* Azul Claro Bootstrap */
-  --color-light: #f8f9fa;
-  /* Light Bootstrap */
-  --color-dark: #343a40;
-  /* Dark Bootstrap */
-  /* Outras Cores */
-  --color-background: #ffffff;
-  --color-text: #212529;
-  --color-muted: #6c757d; }
-
-/* Ajustes para o menu */
-.site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000; }
-
-.navbar-nav {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center; }
-
-.navbar-brand {
-  margin-right: auto;
-  /* Empurra os itens da direita para o final da barra */ }
-
-/* Ajustes para o menu */
-.site-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000; }
-
-#video {
-  position: relative;
-  width: 100%;
-  padding-top: 85vh;
-  overflow: hidden;
-  background: -webkit-linear-gradient(top left, #0078a3 0%, #fd7e14 100%);
-  background: linear-gradient(to bottom right, #0078a3 0%, #fd7e14 100%); }
-
-.video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: .5;
-  pointer-events: none; }
-
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%); }
-
-.text-light {
-  --bs-text-opacity: 1;
-  color: #f8f9fa !important; }
-
-.text-uppercase {
-  text-transform: uppercase !important; }
-
-@media (min-width: 992px) {
-  .navbar-nav {
-    margin-left: auto;
-    /* Alinha os itens à direita */ }
-  .navbar-nav .nav-item {
-    padding: 5px;
-    /* Espaçamento entre os itens do menu */
-    text-align: center; } }
-
-/* Estilização para desktop */
-@media (min-width: 992px) {
-  .site-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    /* Z-index alto para sobrepor outros elementos */ } }
-
-/* Estilização para responsivo (hamburger menu) */
-@media (max-width: 991px) {
-  .site-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000; }
-  /* Ajuste para o conteúdo não começar por baixo do header */
-  body {
-    padding-top: 56px;
-    /* Altura do header no responsivo */ }
-  .navbar-collapse {
-    max-height: calc(100vh - 56px);
-    /* Altura da tela menos altura do header */
-    overflow-y: auto;
-    /* Adiciona scroll quando necessário */ } }
-
 /* Estilos Globais */
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: #212529;
-  background-color: #ffffff; }
+  background-color: #ffffff;
+  margin: 0; }
+
+.text-light {
+  color: #f8f9fa !important; }
+
+.text-uppercase {
+  text-transform: uppercase !important; }
 
 /* Cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Georgia', serif;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #343a40;
   margin-bottom: 1rem; }
 
@@ -186,7 +67,7 @@ a:focus {
 
 /* Listas */
 ul, ol {
-  margin: 1rem 0;
+  margin: 0;
   padding: 0 0 0 2rem; }
 
 /* Imagens */
@@ -194,13 +75,19 @@ img {
   max-width: 100%;
   height: auto; }
 
-/* Formulários */
-input,
-button,
-textarea,
-select {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  font-size: 1rem; }
+/* Variáveis de Fonte e Cores */
+:root {
+  /* Fontes */
+  /* Cores */
+  /* Azul Bootstrap */
+  /* Cinza Bootstrap */
+  /* Verde Bootstrap */
+  /* Vermelho Bootstrap */
+  /* Amarelo Bootstrap */
+  /* Azul Claro Bootstrap */
+  /* Light Bootstrap */
+  /* Dark Bootstrap */
+  /* Outras Cores */ }
 
 /* Tabelas */
 table {
@@ -220,18 +107,42 @@ thead th {
 tbody + tbody {
   border-top: 2px solid #6c757d; }
 
-/* Responsividade */
-@media (max-width: 576px) {
-  h1 {
-    font-size: 2rem; }
-  h2 {
-    font-size: 1.75rem; }
-  h3 {
-    font-size: 1.5rem; } }
+/* Carrossel Flickity */
+.carousel-cell {
+  width: 100%;
+  padding-right: 10px; }
 
-/* Customizações Específicas do Tema */
+.flickity-page-dots {
+  bottom: -30px; }
+
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: #007bff; }
+
+.flickity-page-dots .dot.is-selected {
+  background: #007bff; }
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; }
+
 .navbar {
   background-color: #007bff; }
+
+.navbar-nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
 
 .navbar-nav .nav-link.open {
   color: #007bff; }
@@ -275,36 +186,16 @@ tbody + tbody {
 .navbar-nav .nav-link.open:hover::after {
   width: 110%; }
 
-footer {
-  background-color: #6c757d;
-  color: #f8f9fa;
-  padding: 1rem 0; }
-
-footer a {
-  color: #343a40; }
-
-footer a:hover {
-  color: #007bff; }
-
-/* Carrossel Flickity */
-.carousel-cell {
-  width: 100%;
-  padding-right: 10px; }
-
-.flickity-page-dots {
-  bottom: -30px; }
-
-.flickity-page-dots .dot {
-  width: 12px;
-  height: 12px;
-  opacity: 1;
-  background: #007bff; }
-
-.flickity-page-dots .dot.is-selected {
-  background: #007bff; }
+.navbar-brand {
+  margin-right: auto;
+  /* Empurra os itens da direita para o final da barra */ }
 
 .nav-item {
   position: relative; }
+
+/* Dropdown Submenus */
+.nav-item:hover .dropdown-menu {
+  display: block; }
 
 .dropdown-menu {
   display: none;
@@ -324,9 +215,6 @@ footer a:hover {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem; }
-
-.nav-item:hover .dropdown-menu {
-  display: block; }
 
 .dropdown-menu .dropdown-item {
   display: block;
@@ -356,3 +244,222 @@ footer a:hover {
   z-index: -1;
   -webkit-transition: width 150ms ease-in-out;
   transition: width 150ms ease-in-out; }
+
+/* CSS Reset */
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%; }
+
+/* Estilos Globais */
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #212529;
+  background-color: #ffffff;
+  margin: 0; }
+
+.text-light {
+  color: #f8f9fa !important; }
+
+.text-uppercase {
+  text-transform: uppercase !important; }
+
+/* Cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #343a40;
+  margin-bottom: 1rem; }
+
+h1 {
+  font-size: 2.5rem; }
+
+h2 {
+  font-size: 2rem; }
+
+h3 {
+  font-size: 1.75rem; }
+
+h4 {
+  font-size: 1.5rem; }
+
+h5 {
+  font-size: 1.25rem; }
+
+h6 {
+  font-size: 1rem; }
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none; }
+
+a:hover,
+a:focus {
+  color: #007bff;
+  text-decoration: underline; }
+
+/* Botões */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff; }
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0062cc;
+  border-color: #0062cc; }
+
+/* Listas */
+ul, ol {
+  margin: 0;
+  padding: 0 0 0 2rem; }
+
+/* Imagens */
+img {
+  max-width: 100%;
+  height: auto; }
+
+/* Variáveis de Fonte e Cores */
+:root {
+  /* Fontes */
+  /* Cores */
+  /* Azul Bootstrap */
+  /* Cinza Bootstrap */
+  /* Verde Bootstrap */
+  /* Vermelho Bootstrap */
+  /* Amarelo Bootstrap */
+  /* Azul Claro Bootstrap */
+  /* Light Bootstrap */
+  /* Dark Bootstrap */
+  /* Outras Cores */ }
+
+/* Tabelas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem; }
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-top: 1px solid #6c757d; }
+
+thead th {
+  border-bottom: 2px solid #6c757d; }
+
+tbody + tbody {
+  border-top: 2px solid #6c757d; }
+
+/* Carrossel Flickity */
+.carousel-cell {
+  width: 100%;
+  padding-right: 10px; }
+
+.flickity-page-dots {
+  bottom: -30px; }
+
+.flickity-page-dots .dot {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background: #007bff; }
+
+.flickity-page-dots .dot.is-selected {
+  background: #007bff; }
+
+/* Home */
+#video {
+  position: relative;
+  width: 100%;
+  padding-top: 85vh;
+  overflow: hidden;
+  background: -webkit-linear-gradient(top left, #0078a3 0%, #fd7e14 100%);
+  background: linear-gradient(to bottom right, #0078a3 0%, #fd7e14 100%); }
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .5;
+  pointer-events: none; }
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+/* Formulários */
+input,
+button,
+textarea,
+select {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem; }
+
+/* Footer */
+footer {
+  background-color: #6c757d;
+  color: #f8f9fa;
+  padding-top: 1rem; }
+
+footer a {
+  color: #343a40; }
+
+footer a:hover {
+  color: #007bff; }
+
+.site-footer address {
+  color: #343a40; }
+
+@media (min-width: 992px) {
+  .navbar-nav {
+    margin-left: auto;
+    /* Alinha os itens à direita */ }
+  .navbar-nav .nav-item {
+    padding: 5px;
+    /* Espaçamento entre os itens do menu */
+    text-align: center; } }
+
+/* Estilização para desktop */
+@media (min-width: 992px) {
+  .site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Z-index alto para sobrepor outros elementos */ } }
+
+/* Estilização para responsivo (hamburger menu) */
+@media (max-width: 991px) {
+  .site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; }
+  /* Ajuste para o conteúdo não começar por baixo do header */
+  body {
+    padding-top: 56px;
+    /* Altura do header no responsivo */ }
+  .navbar-collapse {
+    max-height: calc(100vh - 56px);
+    /* Altura da tela menos altura do header */
+    overflow-y: auto;
+    /* Adiciona scroll quando necessário */ } }
+
+/* Responsividade */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 2rem; }
+  h2 {
+    font-size: 1.75rem; }
+  h3 {
+    font-size: 1.5rem; } }
