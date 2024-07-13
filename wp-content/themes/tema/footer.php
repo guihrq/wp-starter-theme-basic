@@ -63,6 +63,9 @@
             <p class="mb-0">&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All Rights Reserved.</p>
         </div>
     </div>
+    <div class="img-topo">
+        <img id="button" src="<?php echo get_template_directory_uri(); ?>/assets/images/scrolltop.png" alt="Seta Topo">
+    </div>
 </footer>
 
 <!-- Custom JavaScript -->

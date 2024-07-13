@@ -1,5 +1,20 @@
-/* CSS Reset */
+/* Variáveis de Fonte e Cores */
+$font-primary: 'Helvetica Neue', Arial, sans-serif;
+$font-secondary: 'Georgia', serif;
 
+$color-primary: #007bff;  /* Azul Bootstrap */
+$color-secondary: #6c757d; /* Cinza Bootstrap */
+$color-success: #28a745;   /* Verde Bootstrap */
+$color-danger: #dc3545;    /* Vermelho Bootstrap */
+$color-warning: #ffc107;   /* Amarelo Bootstrap */
+$color-info: #17a2b8;      /* Azul Claro Bootstrap */
+$color-light: #f8f9fa;     /* Light Bootstrap */
+$color-dark: #343a40;      /* Dark Bootstrap */
+$color-background: #ffffff;
+$color-text: #212529;
+$color-muted: #6c757d;
+
+/* CSS Reset */
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -8,17 +23,16 @@ html {
 
 /* Estilos Globais */
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: $font-primary;
   font-size: 1rem;
   line-height: 1.6;
-  color: #212529;
-  background-color: #ffffff;
+  color: $color-text;
+  background-color: $color-background;
   margin: 0;
 }
 
 .text-light {
-  $bs-text-opacity: 1;
-  color: #f8f9fa !important;
+  color: $color-light !important;
 }
 
 .text-uppercase {
@@ -27,8 +41,8 @@ body {
 
 /* Cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Helvetica Neue', Arial, sans-serif;;
-  color: #343a40;
+  font-family: $font-primary;
+  color: $color-dark;
   margin-bottom: 1rem;
 }
 
@@ -58,27 +72,27 @@ h6 {
 
 /* Links */
 a {
-  color: #007bff;
+  color: $color-primary;
   text-decoration: none;
-}
 
-a:hover,
-a:focus {
-  color: #007bff;
-  text-decoration: underline;
+  &:hover,
+  &:focus {
+    color: $color-primary;
+    text-decoration: none;
+  }
 }
 
 /* Botões */
 .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: $color-primary;
+  border-color: $color-primary;
   color: #fff;
-}
 
-.btn-primary:hover,
-.btn-primary:focus {
-  background-color: darken(#007bff, 10%);
-  border-color: darken(#007bff, 10%);
+  &:hover,
+  &:focus {
+    background-color: darken($color-primary, 10%);
+    border-color: darken($color-primary, 10%);
+  }
 }
 
 /* Listas */
@@ -93,48 +107,30 @@ img {
   height: auto;
 }
 
-/* Variáveis de Fonte e Cores */
-:root {
-  /* Fontes */
-  $font-primary: 'Helvetica Neue', Arial, sans-serif;
-  $font-secondary: 'Georgia', serif;
-
-  /* Cores */
-  $color-primary: #007bff; /* Azul Bootstrap */
-  $color-secondary: #6c757d; /* Cinza Bootstrap */
-  $color-success: #28a745; /* Verde Bootstrap */
-  $color-danger: #dc3545; /* Vermelho Bootstrap */
-  $color-warning: #ffc107; /* Amarelo Bootstrap */
-  $color-info: #17a2b8; /* Azul Claro Bootstrap */
-  $color-light: #f8f9fa; /* Light Bootstrap */
-  $color-dark: #343a40; /* Dark Bootstrap */
-
-  /* Outras Cores */
-  $color-background: #ffffff;
-  $color-text: #212529;
-  $color-muted: #6c757d;
-}
-
 /* Tabelas */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
-}
 
-th,
-td {
-  padding: 0.75rem;
-  text-align: left;
-  border-top: 1px solid #6c757d;
-}
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border-top: 1px solid $color-secondary;
 
-thead th {
-  border-bottom: 2px solid #6c757d;
-}
+    &:first-child {
+      border-left: none;
+    }
+  }
 
-tbody + tbody {
-  border-top: 2px solid #6c757d;
+  thead th {
+    border-bottom: 2px solid $color-secondary;
+  }
+
+  tbody + tbody {
+    border-top: 2px solid $color-secondary;
+  }
 }
 
 /* Carrossel Flickity */
@@ -145,15 +141,15 @@ tbody + tbody {
 
 .flickity-page-dots {
   bottom: -30px;
-}
 
-.flickity-page-dots .dot {
-  width: 12px;
-  height: 12px;
-  opacity: 1;
-  background: #007bff
-}
+  .dot {
+    width: 12px;
+    height: 12px;
+    opacity: 0.2;
+    background: $color-secondary;
 
-.flickity-page-dots .dot.is-selected {
-  background: #007bff
+    &.is-selected {
+      background: $color-secondary;
+    }
+  }
 }

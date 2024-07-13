@@ -1,66 +1,66 @@
+/* Estilização para Desktop */
 @media (min-width: 992px) {
-  .navbar-nav {
-      margin-left: auto; /* Alinha os itens à direita */
-  }
-
-  .navbar-nav .nav-item {
-      padding: 5px; /* Espaçamento entre os itens do menu */
-      text-align: center;
-  }
-}
-/* Estilização para desktop */
-@media (min-width: 992px) {
-  .site-header {
+    .navbar-nav {
+      margin-left: auto; // Alinha os itens à direita
+  
+      .nav-item {
+        padding: 5px; // Espaçamento entre os itens do menu
+        text-align: center;
+      }
+    }
+  
+    .site-header {
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 1000; /* Z-index alto para sobrepor outros elementos */
+      z-index: 1000; // Z-index alto para sobrepor outros elementos
+    }
   }
-}
-
-/* Estilização para responsivo (hamburger menu) */
-@media (max-width: 991px) {
-  .site-header {
+  
+  /* Estilização para Responsivo (Hamburger Menu) */
+  @media (max-width: 991px) {
+    .site-header {
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
+    }
+  
+    body {
+      padding-top: 56px; // Altura do header no responsivo
+    }
+  
+    .navbar-collapse {
+      max-height: calc(100vh - 56px); // Altura da tela menos altura do header
+      overflow-y: auto; // Adiciona scroll quando necessário
+    }
   }
-
-  /* Ajuste para o conteúdo não começar por baixo do header */
-  body {
-      padding-top: 56px; /* Altura do header no responsivo */
-  }
-
-  .navbar-collapse {
-      max-height: calc(100vh - 56px); /* Altura da tela menos altura do header */
-      overflow-y: auto; /* Adiciona scroll quando necessário */
-  }
-}
-
-/* Responsividade */
-@media (max-width: 576px) {
-  h1 {
+  
+  /* Responsividade */
+  @media (max-width: 576px) {
+    h1 {
       font-size: 2rem;
-  }
-
-  h2 {
+    }
+  
+    h2 {
       font-size: 1.75rem;
-  }
-
-  h3 {
+    }
+  
+    h3 {
       font-size: 1.5rem;
+    }
   }
-}
-
-@media (min-width: 768px) {
   
-}
-
-@media (min-width: 992px) {
+  /* Media Queries Adicionais */
+  @media (min-width: 768px) {
+    // Estilos para telas médias (exemplo)
+  }
   
-}
-
-@media (min-width: 1200px) {
+  @media (min-width: 992px) {
+    // Estilos para telas grandes (exemplo)
+  }
   
-}
+  @media (min-width: 1200px) {
+    // Estilos para telas extra grandes (exemplo)
+  }
+  

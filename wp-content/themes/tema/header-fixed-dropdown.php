@@ -17,8 +17,8 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
-            <a class="navbar-brand me-auto" href="<?php echo home_url(); ?>">
-                <?php bloginfo('name'); ?>
+            <a href="/" title="">
+                <img class="img-fluid" src="<?php echo get_template_directory_uri(); ?>/assets/images/170x50.png" alt="Logo" title="Logo"/> 
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'textdomain'); ?>">
                 <span class="navbar-toggler-icon"></span>

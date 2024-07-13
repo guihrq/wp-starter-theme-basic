@@ -109,8 +109,11 @@ get_header('fixed-dropdown'); ?>
                         <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 carousel-cell">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="text-center mb-4">
+                                        <img src="<?php the_sub_field('img_depoente'); ?>" alt="" class="img-fluid">
+                                    </div>
                                     <p class="card-text"><?php the_sub_field('depoimento_text'); ?></p>
-                                    <h5 class="card-title"><?php the_sub_field('depoimento_author'); ?></h5>
+                                    <h5 class="card-title text-center"><?php the_sub_field('depoimento_author'); ?></h5>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +133,7 @@ get_header('fixed-dropdown'); ?>
             </div>
             <?php
             $recent_posts = wp_get_recent_posts(array(
-                'numberposts' => 6,
+                'numberposts' => 3,
                 'post_status' => 'publish',
             ));
             foreach($recent_posts as $post) : ?>
@@ -155,7 +158,7 @@ get_header('fixed-dropdown'); ?>
 <section id="contato" class="mb-5">
     <div class="container mt-5">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
                 <h2><?php the_field('contato_title'); ?></h2>
                 <p><?php the_field('contato_description'); ?></p>
             </div>
@@ -190,6 +193,10 @@ get_header('fixed-dropdown'); ?>
                     <button type="submit" class="btn btn-primary mt-3">Enviar Mensagem</button>   
                 </form>
             </div>
+        </div>
+        <div class="row pt-5">
+            <h2>Exemplo de Inclusão de Partes de Código</h2>
+            <?php include(TEMPLATEPATH . "/inc/teste.php"); ?>
         </div>
     </div>
 </section>
