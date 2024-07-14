@@ -20,6 +20,35 @@ get_header('fixed-dropdown'); ?>
     </div>
 </section>
 
+<!-- Sessão 2: Carrossel de Banners -->
+<section id="banners" class="py-5">
+    <div class="container-full">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="carousel-banners">
+                    <?php 
+                    $banners = get_field('banners_carousel');
+                    if ($banners) :
+                        foreach ($banners as $banner) : ?>
+                            <div class="carousel-cell">
+                                <div class="banner text-center">
+                                    <img src="<?php echo $banner['banner_image_desktop']; ?>" class="img-fluid d-none d-sm-block d-md-block d-lg-block" alt="Banner Desktop">
+                                    <img src="<?php echo $banner['banner_image_mobile']; ?>" class="img-fluid d-block d-sm-none d-md-none d-lg-none" alt="Banner Mobile">
+                                    <div class="content text-center text-light text-uppercase">
+                                        <h2><?php echo $banner['titulo_banner']; ?></h2>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php 
+                        endforeach;
+                    endif; 
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Sessão 2: Hero -->
 <section id="hero" class="mb-5">
     <div class="container mt-5">
@@ -96,33 +125,8 @@ get_header('fixed-dropdown'); ?>
     </div>
 </section>
 
-<!-- Sessão 6: Depoimentos -->
-<section id="depoimentos" class="mb-5">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                <h2><?php the_field('depoimentos_title'); ?></h2>
-            </div>
-            <div class="carousel-depoimentos">
-                <?php if( have_rows('depoimentos_items') ): ?>
-                    <?php while( have_rows('depoimentos_items') ): the_row(); ?>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 carousel-cell">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="text-center mb-4">
-                                        <img src="<?php the_sub_field('img_depoente'); ?>" alt="" class="img-fluid">
-                                    </div>
-                                    <p class="card-text"><?php the_sub_field('depoimento_text'); ?></p>
-                                    <h5 class="card-title text-center"><?php the_sub_field('depoimento_author'); ?></h5>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Carrossel Depoimentos -->
+<?php include(TEMPLATEPATH . "/carrosseis/depoimentos.php"); ?>
 
 <!-- Sessão 7: Blog -->
 <section id="blog" class="mb-5">
@@ -154,52 +158,7 @@ get_header('fixed-dropdown'); ?>
     </div>
 </section>
 
-<!-- Sessão 8: Contato -->
-<section id="contato" class="mb-5">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-                <h2><?php the_field('contato_title'); ?></h2>
-                <p><?php the_field('contato_description'); ?></p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <form id="contactForm" method="post" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" novalidate>
-                    <div class="form-group">
-                        <label for="nome" class="form-label">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required>
-                        <div class="invalid-feedback">Por favor, informe seu nome.</div>
-                    </div>
-                
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <div class="invalid-feedback">Por favor, informe um email válido.</div>
-                    </div>
-                
-                    <div class="form-group">
-                        <label for="telefone" class="form-label">Telefone</label>
-                        <input type="tel" class="form-control" id="telefone" name="telefone" required>
-                        <div class="invalid-feedback">Por favor, informe um número de telefone válido.</div>
-                    </div>
-                
-                    <div class="form-group">
-                        <label for="mensagem" class="form-label">Mensagem</label>
-                        <textarea class="form-control" id="mensagem" name="mensagem" rows="4" style="resize: none;" required></textarea>
-                        <div class="invalid-feedback">Por favor, digite sua mensagem.</div>
-                    </div>
-                
-                    <button type="submit" class="btn btn-primary mt-3">Enviar Mensagem</button>   
-                </form>
-            </div>
-        </div>
-        <div class="row pt-5">
-            <h2>Exemplo de Inclusão de Partes de Código</h2>
-            <?php include(TEMPLATEPATH . "/inc/teste.php"); ?>
-        </div>
-    </div>
-</section>
-
+<!-- Formulário Contato -->
+<?php include(TEMPLATEPATH . "/forms/formulario-contato.php"); ?>
 
 <?php get_footer(); ?>

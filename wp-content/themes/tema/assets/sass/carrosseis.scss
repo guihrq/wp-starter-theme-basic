@@ -1,0 +1,42 @@
+/* Carrossel Flickity */
+.carousel-cell {
+  width: 100%;
+  padding-right: 10px;
+}
+
+.flickity-page-dots {
+  bottom: -30px;
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    opacity: 0.2;
+    background: $color-secondary;
+
+    &.is-selected {
+      background: $color-secondary;
+    }
+  }
+}
+
+#banners {
+  .carousel-banners {
+    .carousel-cell {
+      padding: 0;
+    }
+  }
+}
+
+#depoimentos {
+  .carousel-depoimentos {
+    .carousel-cell {
+      .card {
+        .card-body {
+          img {
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}

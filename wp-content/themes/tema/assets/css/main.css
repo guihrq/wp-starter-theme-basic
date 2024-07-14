@@ -98,21 +98,6 @@ table {
   table tbody + tbody {
     border-top: 2px solid #6c757d; }
 
-/* Carrossel Flickity */
-.carousel-cell {
-  width: 100%;
-  padding-right: 10px; }
-
-.flickity-page-dots {
-  bottom: -30px; }
-  .flickity-page-dots .dot {
-    width: 12px;
-    height: 12px;
-    opacity: 0.2;
-    background: #6c757d; }
-    .flickity-page-dots .dot.is-selected {
-      background: #6c757d; }
-
 /* Header */
 .site-header {
   position: fixed;
@@ -304,21 +289,6 @@ table {
   table tbody + tbody {
     border-top: 2px solid #6c757d; }
 
-/* Carrossel Flickity */
-.carousel-cell {
-  width: 100%;
-  padding-right: 10px; }
-
-.flickity-page-dots {
-  bottom: -30px; }
-  .flickity-page-dots .dot {
-    width: 12px;
-    height: 12px;
-    opacity: 0.2;
-    background: #6c757d; }
-    .flickity-page-dots .dot.is-selected {
-      background: #6c757d; }
-
 /* Home */
 #video {
   position: relative;
@@ -338,6 +308,11 @@ table {
   opacity: 0.5;
   pointer-events: none; }
 
+#banners {
+  position: relative;
+  width: 100%;
+  overflow: hidden; }
+
 .content {
   position: absolute;
   top: 50%;
@@ -346,9 +321,6 @@ table {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%); }
 
-#depoimentos .carousel-depoimentos .carousel-cell .card .card-body img {
-  border-radius: 50%; }
-
 /* Formulários */
 input,
 button,
@@ -356,6 +328,27 @@ textarea,
 select {
   font-family: 'Helvetica Neue', Arial, sans-serif;
   font-size: 1rem; }
+
+/* Carrossel Flickity */
+.carousel-cell {
+  width: 100%;
+  padding-right: 10px; }
+
+.flickity-page-dots {
+  bottom: -30px; }
+  .flickity-page-dots .dot {
+    width: 12px;
+    height: 12px;
+    opacity: 0.2;
+    background: #6c757d; }
+    .flickity-page-dots .dot.is-selected {
+      background: #6c757d; }
+
+#banners .carousel-banners .carousel-cell {
+  padding: 0; }
+
+#depoimentos .carousel-depoimentos .carousel-cell .card .card-body img {
+  border-radius: 50%; }
 
 /* Footer */
 footer {

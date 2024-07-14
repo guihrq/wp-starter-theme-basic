@@ -18,23 +18,15 @@
   pointer-events: none;
 }
 
+#banners {
+  position: relative;
+  width: 100%;
+  // padding-top: 85vh;
+  overflow: hidden;
+}
 .content {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-#depoimentos {
-  .carousel-depoimentos {
-    .carousel-cell {
-      .card {
-        .card-body {
-          img {
-            border-radius: 50%;
-          }
-        }
-      }
-    }
-  }
 }

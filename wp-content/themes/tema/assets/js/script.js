@@ -62,7 +62,7 @@ jQuery(document).ready(function($) {
 // Botão Voltar para o Topo
 var btn = $('#button');
 $(window).scroll(function() {
-  if ($(window).scrollTop() > 600) {
+  if ($(window).scrollTop() > 2000) {
     btn.addClass('show');
   } else {
     btn.removeClass('show');
