@@ -46,3 +46,172 @@ footer {
     width: 40px;
   }
 }
+
+// Modal Política de Privacidade / Cookies
+.lgpd {
+  position: fixed;
+  bottom: 0px;
+  width: calc(100% - 2rem);
+  z-index: 1000;
+  margin: 1rem;
+  animation: lgpd .5s forwards;
+  pointer-events: none;
+
+  .lgpd-container {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 18rem);
+    align-items: center;
+    max-width: 540px;
+    margin: 0 auto;
+    font-size: .875rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: normal;
+    line-height: 1.2;
+    position: relative;
+    z-index: 110;
+    pointer-events: none;
+    
+    .lgpd-preferences {
+      background: white;
+      padding: 1.5rem 1rem 2rem 1rem;
+      z-index: 100;
+      border-radius: 5px 5px 0 0;
+      opacity: 0;
+      transform: translateY(15px);
+      visibility: hidden;
+      grid-column: 2;
+      
+      &.open {
+        transform: translateY(5px);
+        opacity: 1;
+        visibility: visible;
+        transition: .3s;
+        pointer-events: auto;
+      }
+      .lgpd-preferences-header {
+        margin-bottom: 1rem;
+        .lgpd-link {
+          color: black;
+          text-decoration: underline;
+        }
+      }
+      .lgpd-switch {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        .lgpd-switch-item {
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          .lgpd-switch-toggle {
+            display: inline-block;
+            background: #ccc;
+            width: 36px;
+            border-radius: 26px;
+            padding: 2px;
+            margin-right: .5rem;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            top: -1px;
+            &::after {
+              content: '';
+              display: block;
+              width: 18px;
+              height: 18px;
+              border-radius: 50%;
+              background: white;
+              box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
+              transition: 0.1s;
+            }
+          }
+          .lgpd-switch-toggle[disabled] {
+            opacity: .3;
+            cursor: initial;
+          }
+          .lgpd-switch-toggle[disabled][aria-checked="true"] {
+            background: $color-dark;
+          }
+          .lgpd-switch-toggle[aria-checked="true"] {
+            background: $color-dark;
+            &::after {
+              transform: translateX(14px);
+            }
+          }
+          .lgpd-switch-toggle[disabled] {
+            opacity: .3;
+            cursor: initial;
+          }
+          .lgpd-switch-toggle[disabled] + span {
+            cursor: initial;
+          }
+          .lgpd-switch-toggle + span {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .lgpd-info {
+      display: grid;
+      grid-template-columns: 1fr minmax(auto, 16rem);
+      grid-column: 1 / 3;
+      background: white;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 2px 3px 0px rgba(0, 0, 0, .2);
+      background: white;
+      border-radius: 5px;
+      padding: 1rem;
+      pointer-events: auto;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+
+      .lgpd-buttons {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 1rem;
+        .lgpd-personalizar {
+          background: #eee;
+          color: $color-dark;
+          box-shadow: none;
+        }
+        .lgpd-personalizar {
+          background-image: linear-gradient(#eee  , #eee);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+          color: $color-dark;
+          font-size: .875rem;
+          font-family: "Rubik", sans-serif;
+          font-weight: normal;
+          line-height: 1.2;
+          display: block;
+          box-sizing: border-box;
+          padding: 0.9375rem;
+          transition: .3s;
+          border: none;
+          transition-timing-function: cubic-bezier(0.2, 1, 0.2, 1.4);
+          cursor: pointer;
+          border: 1px solid transparent;
+        }
+        .lgpd-save {
+          background-image: linear-gradient($color-light, $color-light);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+          color: $color-dark;
+          font-size: .875rem;
+          font-family: "Rubik", sans-serif;
+          font-weight: normal;
+          line-height: 1.2;
+          display: block;
+          box-sizing: border-box;
+          padding: 0.9375rem;
+          transition: .3s;
+          border: none;
+          transition-timing-function: cubic-bezier(0.2, 1, 0.2, 1.4);
+          cursor: pointer;
+          border: 1px solid transparent;
+        }
+      }
+    }
+  }
+}

@@ -68,6 +68,36 @@
     </div>
 </footer>
 
+<div class="lgpd">
+    <div class="lgpd-container">
+        <div class="lgpd-preferences" data-lgpd-preferences="">
+            <p class="lgpd-preferences-header">Saiba mais sobre os cookies no link: <a class="lgpd-link" href="/politica-de-privacidade/">política de privacidade</a></p>
+            <ul class="lgpd-switch">
+                <li class="lgpd-switch-item">
+                    <button id="switchEssential" title="Não é possível utilizar o site sem essas funcionalidades" class="lgpd-switch-toggle" role="switch" disabled aria-checked="true" aria-labelledby="lgpd-itens-essenciais"></button>
+                    <span alt="Só é possível desabilitar diretamente no browser.">Funcionalidades Essenciais</span>
+                </li>
+                <li class="lgpd-switch-item">
+                    <button id="switchAnalytics" class="lgpd-switch-toggle" data-lgpd-id="analytics" role="switch" aria-checked="true" aria-labelledby="lgpd-itens-analise"></button>
+                    <span id="lgpd-itens-analise">Análise de Uso do Site</span>
+                </li>
+                <li class="lgpd-switch-item">
+                    <button id="switchAds" class="lgpd-switch-toggle" data-lgpd-id="ads" role="switch" aria-checked="true" aria-labelledby="lgpd-itens-anuncios"></button>
+                    <span id="lgpd-itens-anuncios">Anúncios Personalizados</span>
+                </li>
+            </ul>
+        </div>
+        <div class="lgpd-info">
+            <p>Este site utiliza cookies para a análise de uso e anúncios.</p>
+            <div class="lgpd-buttons">
+                <button id="btnPersonalizar" class="lgpd-personalizar" data-lgpd-personalizar="">Personalizar</button>
+                <button id="btnContinuar" class="lgpd-save" data-lgpd-save="">Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Custom JavaScript -->
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/wow.min.js"></script>
 <script>

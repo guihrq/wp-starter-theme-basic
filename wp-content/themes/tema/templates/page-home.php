@@ -10,7 +10,8 @@ get_header('fixed-dropdown'); ?>
     <div class="container-full">
         <div class="row">
             <div class="col-md-12">
-                <video src="<?php the_field('banner_video'); ?>" loading="lazy" class="video-background" autoplay loop muted></video>
+                <video src="<?php the_field('banner_video_desk'); ?>" loading="lazy" class="video-background d-none d-sm-block d-md-block d-lg-block" autoplay loop muted></video>
+                <video src="<?php the_field('banner_video_mob'); ?>" loading="lazy" class="video-background d-block d-sm-none d-md-none d-lg-none" autoplay loop muted></video>
                 <div class="content text-center text-light text-uppercase">
                     <h2><?php the_field('titulo_banner_video'); ?></h2>
                     <h4><?php the_field('subtitulo_banner_video'); ?></h4>

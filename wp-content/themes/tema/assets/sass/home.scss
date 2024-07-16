@@ -1,32 +1,32 @@
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Home */
 #video {
   position: relative;
   width: 100%;
   padding-top: 85vh;
   overflow: hidden;
-  background: linear-gradient(to bottom right, #0078a3 0%, #fd7e14 100%);
-}
-
-.video-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-  pointer-events: none;
+  background: linear-gradient(to bottom right, $color-dark 0%, $color-secondary 100%);
+  
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 #banners {
   position: relative;
   width: 100%;
-  // padding-top: 85vh;
   overflow: hidden;
-}
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
