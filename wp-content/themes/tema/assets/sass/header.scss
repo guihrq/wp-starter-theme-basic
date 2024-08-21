@@ -5,6 +5,9 @@
   width: 100%;
   z-index: 1000;
 }
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+  top: 45px;
+}
 
 .navbar {
   background-color: #007bff;

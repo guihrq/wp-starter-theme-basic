@@ -110,6 +110,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/carrossel.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/forms.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/carrossel.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/js/analytics.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/assets/js/script.js"></script>
 <?php wp_footer(); ?>
 </body>

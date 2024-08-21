@@ -1,111 +1,113 @@
-let gulp = require('gulp')
-let browser = require('browser-sync')
-let npm  = require('gulp-watch')
-let sass = require('gulp-sass')
-let autoprefixer = require('gulp-autoprefixer')
-let uglifycss = require('gulp-uglifycss')
-var uglify = require('gulp-uglify')
-var rename = require('gulp-rename')
-var imagemin = require('gulp-imagemin')
-var webp = require('gulp-webp')
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import gulpSass from 'gulp-sass';
+import * as dartSass from 'sass';
+import autoprefixer from 'gulp-autoprefixer';
+import uglifycss from 'gulp-uglifycss';
+import uglify from 'gulp-uglify';
+import rename from 'gulp-rename';
+import imagemin from 'gulp-imagemin';
 
+// Configuração do Sass
+const sass = gulpSass(dartSass);
 
-gulp.task('compile-dev', () => {
+// Configuração do BrowserSync
+const browser = browserSync.create();
 
-	var files = [
-		'./style.css',
-		'./*.php',
-		'./template-part/*.php',
-		'./page-template/*.php',
-		'./inc/.*php',
-		'./assets/js/*.js',
-		'./assets/css/*.css',
-		'./assets/sass/*.scss',
-	];
+// Tarefa para compilar Sass
+function compileSass() {
+  return gulp.src('./assets/sass/main.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(gulp.dest('./assets/css'))
+    .pipe(browser.stream());
+}
 
-	browser.init(files, { 
-		//server: { baseDir: "./" },
-		proxy: "http://starter.local.host/",
-		notify: false
-	})
+// Tarefa para iniciar o servidor de desenvolvimento
+function serve(done) {
+  browser.init({
+    proxy: "http://starter.local.host/",
+    notify: false
+  });
+  done();
+}
 
-	gulp.watch('./assets/sass', function() {
-		return gulp.src('./assets/sass/main.scss')
-		.pipe(sass({ compress: true }))
-		.pipe(autoprefixer()) //add autoprefixer
-		.pipe(gulp.dest('./assets/css'))
-		.pipe(browser.stream())
- 	 });
-  
-	gulp.watch('./*.php', function() {
-		return gulp.src('./*.php')
-		.pipe(browser.stream())
-	});
+// Tarefa para observar mudanças
+function watchFiles() {
+  gulp.watch('./assets/sass/**/*.scss', compileSass);
+  gulp.watch('./*.php').on('change', browser.reload);
+}
 
-})
+// Minificar CSS
+function compressCss() {
+  return gulp.src('./assets/css/main.css')
+    .pipe(uglifycss({
+      "maxLineLen": 80,
+      "uglyComments": true
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./assets/css/min/'));
+}
 
-//minificar css
-gulp.task('compress-css', function () {
-	gulp.src('./assets/css/main.css')
-	  .pipe(uglifycss({
-		"maxLineLen": 80,
-		"uglyComments": true
-	  }))
-	  .pipe(rename({
-		suffix: '.min'
-	  }))
-	  .pipe(gulp.dest('./assets/css/min/'));
-});
+// Minificar JS
+function compressJs() {
+  return gulp.src('./assets/js/*.js')
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest('./assets/js/min/'));
+}
 
-// minificar js
-gulp.task('compress-js', function () {
-	return gulp.src('./assets/js/*.js')
-	.pipe(uglify())
-	.pipe(rename({
-		suffix: '.min'
-	}))
-	.pipe(gulp.dest('./assets/js/min/'))
-});
+// Otimizar imagens
+function compressImages() {
+  return gulp.src('./assets/images/**')
+    .pipe(imagemin({
+      interlaced: true,
+      progressive: true,
+      optimizationLevel: 5,
+      verbose: true
+    }))
+    .pipe(gulp.dest('./assets/images/'));
+}
 
-//otimizar images assets
-gulp.task('compress-images', function () {
-	return gulp.src('./assets/images/**')
-	.pipe(imagemin({
-		interlaced: true,
-		progressive: true,
-		optimizationLevel: 5,
-		verbose: true
-	}))
-	.pipe(gulp.dest('./assets/images/'))
-});
+// Otimizar imagens de uploads
+function compressUpload() {
+  return gulp.src('../../uploads/**')
+    .pipe(imagemin({
+      interlaced: true,
+      progressive: true,
+      optimizationLevel: 5,
+      verbose: true
+    }))
+    .pipe(gulp.dest('../../uploads'));
+}
 
-//otimizar images assets
-gulp.task('compress-upload', function () {
-	return gulp.src('../../uploads/**')
-	.pipe(imagemin({
-		interlaced: true,
-		progressive: true,
-		optimizationLevel: 5,
-		verbose: true
-	}))
-	.pipe(gulp.dest('../../uploads'))
-});
+// Tarefa de produção
+function compileProd() {
+  return gulp.src('./assets/sass/main.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(gulp.dest('./assets/css'));
+}
 
-gulp.task('compile-prod', () => {
-	gulp.watch('./assets/sass', function() {
-		return gulp.src('./assets/sass/main.css')
-		.pipe(sass({ compress: true }))
-		.pipe(gulp.dest('./assets/css'))
-		//.pipe(gulp.dest('./hexapus-web/assets/css'))
-	});
-	
-})
+// Tarefa de desenvolvimento
+const compileDev = gulp.series(
+  compileSass,
+  serve,
+  watchFiles
+);
 
-//Alterar extensão para webp
- 
-gulp.task('webp', function (){
-	return gulp.src('./assets/images/**')
-    .pipe(webp())
-    .pipe(gulp.dest('./assets/images/'))
-});
-
+// Exportar tarefas
+export { 
+  compileSass,
+  serve,
+  watchFiles,
+  compressCss,
+  compressJs,
+  compressImages,
+  compressUpload,
+  compileProd,
+  compileDev
+};
