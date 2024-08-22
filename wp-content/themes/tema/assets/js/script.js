@@ -73,3 +73,15 @@ btn.on('click', function(e) {
   e.preventDefault();
   $('html, body').animate({scrollTop:0}, '300');
 });
+
+// Script para Fechar Todos os Itens
+document.addEventListener('DOMContentLoaded', function () {
+    var closeAllButton = document.getElementById('closeAllButton');
+    closeAllButton.addEventListener('click', function () {
+        var accordions = document.querySelectorAll('.accordion-collapse.show');
+        accordions.forEach(function (accordion) {
+            var bsCollapse = new bootstrap.Collapse(accordion, {toggle: false});
+            bsCollapse.hide();
+        });
+    });
+});

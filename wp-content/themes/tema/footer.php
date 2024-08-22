@@ -71,7 +71,7 @@
 <div class="lgpd">
     <div class="lgpd-container">
         <div class="lgpd-preferences" data-lgpd-preferences="">
-            <p class="lgpd-preferences-header">Saiba mais sobre os cookies no link: <a class="lgpd-link" href="/politica-de-privacidade/">política de privacidade</a></p>
+            <p class="lgpd-preferences-header">Saiba mais sobre os cookies nos links: <a class="lgpd-link" href="/politica-de-cookies/">política de cookies</a> e <a class="lgpd-link" href="/politica-de-privacidade/">política de privacidade</a></p>
             <ul class="lgpd-switch">
                 <li class="lgpd-switch-item">
                     <button id="switchEssential" title="Não é possível utilizar o site sem essas funcionalidades" class="lgpd-switch-toggle" role="switch" disabled aria-checked="true" aria-labelledby="lgpd-itens-essenciais"></button>

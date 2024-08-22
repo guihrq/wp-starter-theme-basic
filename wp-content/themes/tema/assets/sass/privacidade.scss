@@ -1,0 +1,176 @@
+/* CSS para a página de Política de Privacidade */
+
+/* Header */
+// header h1 {
+//   font-size: 2.5rem;
+//   margin-bottom: 0.5rem;
+// }
+
+// header p {
+//   font-size: 1.25rem;
+//   color: #6c757d;
+// }
+
+/* Card */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0.125rem rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Texto da Política */
+.card-text {
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-size: 1.75rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+ul {
+  margin-left: 2rem;
+  list-style-type: disc;
+}
+
+li {
+  // margin-bottom: 0.5rem;
+}
+
+/* Parágrafo */
+p {
+  margin-bottom: 1rem;
+}
+
+/* Estilização de ênfase */
+em {
+  font-style: italic;
+  color: $color-dark;
+}
+
+/* Links */
+a {
+  color: $color-secondary;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilização de itens fortes */
+strong {
+  font-weight: bold;
+}
+
+/* CSS para o menu lateral */
+#sidebar {
+  position: -webkit-sticky; /* Para navegadores WebKit */
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-right: 1px solid #dee2e6;
+}
+
+#sidebar .nav-link {
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  color: $color-dark;
+  border-radius: 4px;
+}
+
+#sidebar .nav-link.active {
+  background-color: $color-background;
+  color: $color-secondary;
+}
+
+#sidebar ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+#sidebar h1, #sidebar h2 {
+  font-size: 1.25rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#sidebar p, #sidebar ul {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Estilização geral do menu fixo e conteúdo */
+.privacy-policy {
+  display: flex;
+  margin-top: 20px;
+}
+
+.menu-card, .content-card {
+  border: 1px solid $color-muted;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: $color-background;
+}
+
+.menu-card {
+  position: sticky;
+  top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.menu-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.menu-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.menu-card li {
+  margin-bottom: 0.5rem;
+}
+
+.menu-card a {
+  text-decoration: none;
+  color: $color-secondary;
+}
+
+.menu-card a:hover {
+  text-decoration: underline;
+}
+
+/* Estilização do conteúdo principal */
+.content-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.content-card h1, .content-card h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.content-card p, .content-card ul {
+  margin-bottom: 1rem;
+}
