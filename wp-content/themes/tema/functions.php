@@ -11,9 +11,9 @@ function theme_setup() {
     register_nav_menus(
         array(
             'primary' => __('Primary Menu'),
-            'footer_company' => __('Footer Company Menu'),
             'footer_products' => __('Footer Products Menu'),
             'footer_services' => __('Footer Services Menu'),
+            'footer_sociamedia' => __('Footer Social Media Menu'),
         )
     );
 }
@@ -63,7 +63,7 @@ class Bootstrap_5_WP_Nav_Menu_Walker extends Walker_Nav_Menu {
             $classes[] = 'dropdown-menu-end';
         }
 
-        $class_names =  join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+        $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
         $class_names = ' class="' . esc_attr( $class_names ) . '"';
 
         $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
@@ -88,87 +88,87 @@ class Bootstrap_5_WP_Nav_Menu_Walker extends Walker_Nav_Menu {
     }
 }
 
-    // Funções para Limpar o Header
-    remove_action('wp_head', 'rsd_link');
-    remove_action('wp_head', 'wlwmanifest_link');
-    remove_action('wp_head', 'start_post_rel_link', 10, 0 );
-    remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-    remove_action('wp_head', 'feed_links_extra', 3);
-    remove_action('wp_head', 'wp_generator');
-    remove_action('wp_head', 'print_emoji_detection_script', 7);
-    remove_action('admin_print_scripts', 'print_emoji_detection_script');
-    remove_action('wp_print_styles', 'print_emoji_styles');
-    remove_action('admin_print_styles', 'print_emoji_styles');
+// Funções para Limpar o Header
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'start_post_rel_link', 10, 0 );
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'feed_links_extra', 3);
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('admin_print_scripts', 'print_emoji_detection_script');
+remove_action('wp_print_styles', 'print_emoji_styles');
+remove_action('admin_print_styles', 'print_emoji_styles');
 
-    // Habilitar Menus
-    // add_theme_support('menus');
+// Habilitar Menus
+// add_theme_support('menus');
 
-    // function create_post_type() {
+// function create_post_type() {
+//     register_post_type( 'profissionais',
+//         array(
+//             'labels' => array(
+//                 'name' => 'Profissionais',
+//                 'singular_name' => 'Profissional',
+//             ),
+//             'public' => true,
+//             'has_archive' => true,
+//             'menu_position' => 16,
+//             'menu_icon' => 'dashicons-id-alt',
+//             'supports' => array( 'title', 'editor' ),
+//             'rewrite' => false,
+//             'query_var' => false,
+//             'publicly_queryable' => false,
+//         )
+//     );
 
-    //     register_post_type( 'profissionais',
-    //         array(
-    //         'labels'             => array(
-    //             'name'               => 'Profissionais',
-    //             'singular_name'      => 'Profissional',
-    //         ),
-    //         'public' => true,
-    //         'has_archive' => true,
-    //         'menu_position'      => 16,
-    //         'menu_icon' => 'dashicons-id-alt',
-    //         'supports' => array( 'title', 'editor' ),
-    //         'rewrite' => false,
-    //         'query_var' => false,
-    //         'publicly_queryable' => false,
-    //         )
-    //     );
+//     register_post_type( 'parceiros',
+//         array(
+//             'labels' => array(
+//                 'name' => 'Parceiros',
+//                 'singular_name' => 'Parceiro',
+//             ),
+//             'public' => true,
+//             'has_archive' => true,
+//             'menu_position' => 16,
+//             'menu_icon' => 'dashicons-groups',
+//             'supports' => array( 'title', 'editor' ),
+//             'rewrite' => false,
+//             'query_var' => false,
+//             'publicly_queryable' => false,
+//         )
+//     );
+// }
+// add_action( 'init', 'create_post_type' );
 
-    //     register_post_type( 'parceiros',
-    //         array(
-    //         'labels'             => array(
-    //             'name'               => 'Parceiros',
-    //             'singular_name'      => 'Parceiro',
-    //         ),
-    //         'public' => true,
-    //         'has_archive' => true,
-    //         'menu_position'      => 16,
-    //         'menu_icon' => 'dashicons-groups',
-    //         'supports' => array( 'title', 'editor' ),
-    //         'rewrite' => false,
-    //         'query_var' => false,
-    //         'publicly_queryable' => false,
-    //         )
-    //     );
-    // }
-    // add_action( 'init', 'create_post_type' );
-
-    /** Pagination */
-    function pagination_funtion() {
+/** Pagination */
+function pagination_function() {
     // Get total number of pages
     global $wp_query;
     $total = $wp_query->max_num_pages;
-    // Only paginate if we have more than one page                   
+    
+    // Only paginate if we have more than one page
     if ( $total > 1 )  {
         // Get the current page
         if ( !$current_page = get_query_var('paged') )
             $current_page = 1;
                             
-            $big = 999999999;
-            // Structure of "format" depends on whether we’re using pretty permalinks
-            $permalink_structure = get_option('permalink_structure');
-            $format = empty( $permalink_structure ) ? '&page=%#%' : 'page/%#%/';
-            echo paginate_links(array(
-                'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
-                'format' => $format,
-                'current' => $current_page,
-                'total' => $total,
-                'mid_size' => 2,
-                'type' => 'list'
-            ));
-        }
+        $big = 999999999;
+        // Structure of "format" depends on whether we’re using pretty permalinks
+        $permalink_structure = get_option('permalink_structure');
+        $format = empty( $permalink_structure ) ? '&page=%#%' : 'page/%#%/';
+        echo paginate_links(array(
+            'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+            'format' => $format,
+            'current' => $current_page,
+            'total' => $total,
+            'mid_size' => 2,
+            'type' => 'list'
+        ));
     }
-    /** END Pagination */
+}
+/** END Pagination */
 
-    // CONTADOR DE POSTS MAIS VISITADOS
+// CONTADOR DE POSTS MAIS VISITADOS
 
 // Remover estilos globais
 function remove_global_styles() {
@@ -218,11 +218,7 @@ function remove_wp_emoji_script() {
     // Remove o filtro para remover o link de feed de emojis do cabeçalho
     remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
     remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-
-    // Remove o filtro para remover o link de feed de emojis do cabeçalho
     remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-
-    // Remover todos os filtros relacionados a emojis
     remove_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
 
     // Remove emoji CDN hostname do DNS prefetching de navegadores modernos
@@ -258,78 +254,78 @@ add_action( 'wp_enqueue_scripts', 'remove_wp_emoji_style_inline', 100 );
 function add_custom_js_to_footer() {
     ?>
     <script>
-    // Espera até que o documento esteja completamente carregado
-    // jQuery(document).ready(function($) {
-        // Seletor para o estilo inline específico que deseja remover
-        // var inlineStyleToRemove = `
-        //     *,
-        //     ::before,
-        //     ::after {
-        //         --tw-border-spacing-x: 0;
-        //         --tw-border-spacing-y: 0;
-        //         --tw-translate-x: 0;
-        //         --tw-translate-y: 0;
-        //         --tw-rotate: 0;
-        //         --tw-skew-x: 0;
-        //         --tw-skew-y: 0;
-        //         --tw-scale-x: 1;
-        //         --tw-scale-y: 1;
-        //         --tw-pan-x: ;
-        //         --tw-pan-y: ;
-        //         --tw-pinch-zoom: ;
-        //         --tw-scroll-snap-strictness: proximity;
-        //         --tw-ordinal: ;
-        //         --tw-slashed-zero: ;
-        //         --tw-numeric-figure: ;
-        //         --tw-numeric-spacing: ;
-        //         --tw-numeric-fraction: ;
-        //         --tw-ring-inset: ;
-        //         --tw-ring-offset-width: 0px;
-        //         --tw-ring-offset-color: #fff;
-        //         --tw-ring-color: rgb(59 130 246 / .5);
-        //         --tw-ring-offset-shadow: 0 0 #0000;
-        //         --tw-ring-shadow: 0 0 #0000;
-        //         --tw-shadow: 0 0 #0000;
-        //         --tw-shadow-colored: 0 0 #0000;
-        //         --tw-blur: ;
-        //         --tw-brightness: ;
-        //         --tw-contrast: ;
-        //         --tw-grayscale: ;
-        //         --tw-hue-rotate: ;
-        //         --tw-invert: ;
-        //         --tw-saturate: ;
-        //         --tw-sepia: ;
-        //         --tw-drop-shadow: ;
-        //         --tw-backdrop-blur: ;
-        //         --tw-backdrop-brightness: ;
-        //         --tw-backdrop-contrast: ;
-        //         --tw-backdrop-grayscale: ;
-        //         --tw-backdrop-hue-rotate: ;
-        //         --tw-backdrop-invert: ;
-        //         --tw-backdrop-opacity: ;
-        //         --tw-backdrop-saturate: ;
-        //         --tw-backdrop-sepia: ;
+        // Espera até que o documento esteja completamente carregado
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     // Seletor para o estilo inline específico que deseja remover
+        //     var inlineStyleToRemove = `
+        //         *,
+        //         ::before,
+        //         ::after {
+        //             --tw-border-spacing-x: 0;
+        //             --tw-border-spacing-y: 0;
+        //             --tw-translate-x: 0;
+        //             --tw-translate-y: 0;
+        //             --tw-rotate: 0;
+        //             --tw-skew-x: 0;
+        //             --tw-skew-y: 0;
+        //             --tw-scale-x: 1;
+        //             --tw-scale-y: 1;
+        //             --tw-pan-x: ;
+        //             --tw-pan-y: ;
+        //             --tw-pinch-zoom: ;
+        //             --tw-scroll-snap-strictness: proximity;
+        //             --tw-ordinal: ;
+        //             --tw-slashed-zero: ;
+        //             --tw-numeric-figure: ;
+        //             --tw-numeric-spacing: ;
+        //             --tw-numeric-fraction: ;
+        //             --tw-ring-inset: ;
+        //             --tw-ring-offset-width: 0px;
+        //             --tw-ring-offset-color: #fff;
+        //             --tw-ring-color: rgb(59 130 246 / .5);
+        //             --tw-ring-offset-shadow: 0 0 #0000;
+        //             --tw-ring-shadow: 0 0 #0000;
+        //             --tw-shadow: 0 0 #0000;
+        //             --tw-shadow-colored: 0 0 #0000;
+        //             --tw-blur: ;
+        //             --tw-brightness: ;
+        //             --tw-contrast: ;
+        //             --tw-grayscale: ;
+        //             --tw-hue-rotate: ;
+        //             --tw-invert: ;
+        //             --tw-saturate: ;
+        //             --tw-sepia: ;
+        //             --tw-drop-shadow: ;
+        //             --tw-backdrop-blur: ;
+        //             --tw-backdrop-brightness: ;
+        //             --tw-backdrop-contrast: ;
+        //             --tw-backdrop-grayscale: ;
+        //             --tw-backdrop-hue-rotate: ;
+        //             --tw-backdrop-invert: ;
+        //             --tw-backdrop-opacity: ;
+        //             --tw-backdrop-saturate: ;
+        //             --tw-backdrop-sepia: ;
+        //         }
+        //     `;
+            
+        //     // Função para remover o estilo inline específico
+        //     function removeInlineStyle() {
+        //         // Encontra todos os elementos <style> no documento
+        //         var styles = document.querySelectorAll('style');
+        //         styles.forEach(function(style) {
+        //             // Verifica se o conteúdo do estilo corresponde ao estilo a ser removido
+        //             if (style.innerHTML.trim() === inlineStyleToRemove.trim()) {
+        //                 // Remove o elemento <style> do DOM
+        //                 style.remove();
+        //             }
+        //         });
         //     }
-        // `;
-        
-        // Função para remover o estilo inline específico
-        // function removeInlineStyle() {
-            // Encontra todos os elementos <style> no documento
-            // $('style').each(function() {
-                // Verifica se o conteúdo do estilo corresponde ao estilo a ser removido
-                // if ($(this).html().trim() === inlineStyleToRemove.trim()) {
-                    // Remove o elemento <style> do DOM
-                    // $(this).remove();
-                // }
-            // });
-        // }
-        
-        // Chama a função para remover o estilo inline
-        // removeInlineStyle();
-    // });
+            
+        //     // Chama a função para remover o estilo inline
+        //     removeInlineStyle();
+        // });
     </script>
     <?php
 }
 add_action('wp_footer', 'add_custom_js_to_footer');
-
 ?>
