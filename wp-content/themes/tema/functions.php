@@ -328,4 +328,321 @@ function add_custom_js_to_footer() {
     <?php
 }
 add_action('wp_footer', 'add_custom_js_to_footer');
+
+// Adiciona o menu principal e o submenu
+function adicionar_menu_formularios() {
+    // Adiciona o menu principal com ícone de formulários
+    add_menu_page(
+        'Formulários', // Título da página
+        'Formulários', // Título do menu
+        'manage_options', // Capacidade necessária
+        'formularios', // Slug do menu
+        'mostrar_pagina_formularios', // Função callback para exibir o conteúdo
+        'dashicons-forms', // Ícone do menu principal (ícone de formulários)
+        6 // Posição no menu
+    );
+
+    // Adiciona o submenu "Contatos" com ícone de pessoa
+    add_submenu_page(
+        'formularios', // Slug do menu principal
+        'Contatos', // Título da página do submenu
+        'Contatos', // Título do submenu
+        'manage_options', // Capacidade necessária
+        'contatos', // Slug do submenu
+        'mostrar_contatos' // Função callback para exibir o conteúdo do submenu
+    );
+}
+
+// Registra a ação para adicionar o menu e submenu
+add_action('admin_menu', 'adicionar_menu_formularios');
+
+// Função para exibir a página principal "Formulários"
+function mostrar_pagina_formularios() {
+    ?>
+    <div class="wrap">
+        <h1>Formulários</h1>
+        <div class="formulario-boxes">
+            <div class="formulario-box">
+                <a href="<?php echo esc_url(admin_url('admin.php?page=contatos')); ?>">
+                    <div class="icon">
+                        <span class="dashicons dashicons-admin-users"></span> <!-- Ícone -->
+                    </div>
+                    <h2>Formulário Contatos Home</h2>
+                </a>
+            </div>
+            <!-- Adicione mais caixas aqui para outros formulários aqui -->
+        </div>
+    </div>
+    <style>
+        .formulario-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .formulario-box {
+            width: 200px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.3s ease;
+        }
+        .formulario-box:hover {
+            transform: scale(1.05);
+        }
+        .formulario-box .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .formulario-box h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .formulario-box p {
+            font-size: 14px;
+            color: #666;
+        }
+        .formulario-box a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+    <?php
+}
+
+// Função para exibir os contatos
+function mostrar_contatos() {
+    global $wpdb;
+    $tabela = $wpdb->prefix . 'contatos';
+
+    $itens_por_pagina = 50;
+    $pagina_atual = isset($_GET['pagina']) ? intval($_GET['pagina']) : 1;
+    $offset = ($pagina_atual - 1) * $itens_por_pagina;
+
+    $orderby = isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : 'created_at';
+    $order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'DESC';
+
+    $valid_orderby = array('nome', 'email', 'telefone', 'mensagem', 'created_at');
+    if (!in_array($orderby, $valid_orderby)) {
+        $orderby = 'created_at';
+    }
+
+    $valid_order = array('ASC', 'DESC');
+    if (!in_array($order, $valid_order)) {
+        $order = 'DESC';
+    }
+
+    $total_registros = $wpdb->get_var("SELECT COUNT(*) FROM $tabela");
+
+    $query = $wpdb->prepare("SELECT * FROM $tabela ORDER BY $orderby $order LIMIT %d OFFSET %d", $itens_por_pagina, $offset);
+    $contatos = $wpdb->get_results($query);
+    ?>
+
+    <div class="wrap">
+        <h1>Contatos</h1>
+        <p>Total de registros: <?php echo esc_html($total_registros); ?></p>
+        <form id="export_csv_form" method="post">
+            <input type="submit" id="exportcsv" name="export_csv" class="button button-primary" value="Exportar CSV">
+        </form>
+        <table class="wp-list-table widefat fixed striped">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="<?php echo esc_url(add_query_arg(array('orderby' => 'nome', 'order' => ($order == 'ASC' ? 'DESC' : 'ASC')), admin_url('admin.php?page=contatos'))); ?>">
+                            Nome
+                            <span class="sorting-indicators">
+                                <span class="sorting-indicator asc <?php echo ($orderby === 'nome' && $order === 'ASC') ? 'active' : 'inactive'; ?>" aria-hidden="true"></span>
+                                <span class="sorting-indicator desc <?php echo ($orderby === 'nome' && $order === 'DESC') ? 'active' : 'inactive'; ?>" aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="<?php echo esc_url(add_query_arg(array('orderby' => 'email', 'order' => ($order == 'ASC' ? 'DESC' : 'ASC')), admin_url('admin.php?page=contatos'))); ?>">
+                            Email
+                            <span class="sorting-indicators">
+                                <span class="sorting-indicator asc <?php echo ($orderby === 'email' && $order === 'ASC') ? 'active' : 'inactive'; ?>" aria-hidden="true"></span>
+                                <span class="sorting-indicator desc <?php echo ($orderby === 'email' && $order === 'DESC') ? 'active' : 'inactive'; ?>" aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </th>
+                    <th>Telefone</th>
+                    <th>Mensagem</th>
+                    <th>
+                        <a href="<?php echo esc_url(add_query_arg(array('orderby' => 'created_at', 'order' => ($order == 'ASC' ? 'DESC' : 'ASC')), admin_url('admin.php?page=contatos'))); ?>">
+                            Data
+                            <span class="sorting-indicators">
+                                <span class="sorting-indicator asc <?php echo ($orderby === 'created_at' && $order === 'ASC') ? 'active' : 'inactive'; ?>" aria-hidden="true"></span>
+                                <span class="sorting-indicator desc <?php echo ($orderby === 'created_at' && $order === 'DESC') ? 'active' : 'inactive'; ?>" aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($contatos as $contato): ?>
+                    <tr>
+                        <td><?php echo esc_html($contato->nome); ?></td>
+                        <td><?php echo esc_html($contato->email); ?></td>
+                        <td><?php echo esc_html($contato->telefone); ?></td>
+                        <td><?php echo esc_html($contato->mensagem); ?></td>
+                        <td><?php echo esc_html($contato->created_at); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <?php
+            $total_paginas = ceil($total_registros / $itens_por_pagina);
+            for ($i = 1; $i <= $total_paginas; $i++) {
+                $class = ($i == $pagina_atual) ? 'current' : '';
+                echo '<a class="' . $class . '" href="' . esc_url(add_query_arg(array('pagina' => $i), admin_url('admin.php?page=contatos'))) . '">' . $i . '</a> ';
+            }
+            ?>
+        </div>
+    </div>
+    <style>
+        .pagination {
+            margin-top: 20px;
+        }
+        .pagination a {
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            margin-right: 4px;
+            color: #333;
+        }
+        .pagination a.current {
+            background-color: #0073aa;
+            color: white;
+            border-color: #0073aa;
+        }
+        table.fixed {
+            table-layout: fixed;
+            margin-top: 20px;
+        }
+        .sorting-indicators {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .sorting-indicator {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            margin-left: 5px;
+        }
+        .sorting-indicator.asc {
+            border-bottom: 8px solid #333;
+            display: none;
+        }
+        .sorting-indicator.desc {
+            border-top: 8px solid #333;
+            display: none;
+        }
+        .sorting-indicator.active.asc {
+            display: inline-block;
+        }
+        .sorting-indicator.active.desc {
+            display: inline-block;
+        }
+        .sorting-indicator.inactive {
+            display: none;
+        }
+        .sorting-indicator.desc:before {
+            display: none;
+        }
+        .sorting-indicator.asc:before {
+            display: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('export_csv_form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var form = event.target;
+            var formData = new FormData(form);
+            formData.append('action', 'export_csv');
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '<?php echo admin_url('admin-ajax.php'); ?>', true);
+            xhr.responseType = 'blob';
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var blob = xhr.response;
+                    var link = document.createElement('a');
+                    var url = URL.createObjectURL(blob);
+                    link.href = url;
+                    link.download = 'contatos.csv';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                } else {
+                    alert('Erro ao exportar CSV.');
+                }
+            };
+            xhr.send(formData);
+        });
+    });
+    </script>
+    <?php
+}
+
+// Função para exportar o CSV via AJAX
+add_action('wp_ajax_export_csv', 'export_csv_function');
+add_action('wp_ajax_nopriv_export_csv', 'export_csv_function'); // Permite a função para usuários não logados, se necessário
+
+function export_csv_function() {
+    global $wpdb;
+    $tabela = $wpdb->prefix . 'contatos';
+
+    // Captura a ordenação da URL
+    $orderby = isset($_POST['orderby']) ? sanitize_text_field($_POST['orderby']) : 'created_at';
+    $order = isset($_POST['order']) ? sanitize_text_field($_POST['order']) : 'DESC';
+
+    // Valida os parâmetros de ordenação
+    $valid_orderby = array('nome', 'email', 'telefone', 'mensagem', 'created_at');
+    if (!in_array($orderby, $valid_orderby)) {
+        $orderby = 'created_at';
+    }
+
+    $valid_order = array('ASC', 'DESC');
+    if (!in_array($order, $valid_order)) {
+        $order = 'DESC';
+    }
+
+    // Consulta para obter os registros
+    $query = $wpdb->prepare("SELECT * FROM $tabela ORDER BY $orderby $order");
+    $contatos = $wpdb->get_results($query);
+
+    // Configura o tipo de conteúdo e cabeçalhos para download
+    header('Content-Type: text/csv');
+    header('Content-Disposition: attachment;filename=contatos.csv');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+
+    // Cria o arquivo CSV no buffer
+    $csv_file = fopen('php://output', 'w');
+    if ($csv_file === false) {
+        wp_die('Não foi possível criar o arquivo CSV.');
+    }
+
+    // Escreve o cabeçalho do CSV
+    fputcsv($csv_file, array('Nome', 'Email', 'Telefone', 'Mensagem', 'Data'));
+    
+    // Escreve os dados dos contatos
+    foreach ($contatos as $contato) {
+        fputcsv($csv_file, array($contato->nome, $contato->email, $contato->telefone, $contato->mensagem, $contato->created_at));
+    }
+
+    // Fecha o arquivo e encerra o script
+    fclose($csv_file);
+    exit();
+}
 ?>

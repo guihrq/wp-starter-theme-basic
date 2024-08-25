@@ -8,7 +8,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                <form id="contactForm" method="post" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" novalidate>
+                <form id="contactForm" class="form-hide" method="post" action="<?php echo esc_url($_SERVER['REQUEST_URI']); ?>" novalidate>
                     <div class="form-group">
                         <label for="nome" class="form-label">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" required>
@@ -32,9 +32,12 @@
                         <textarea class="form-control" id="mensagem" name="mensagem" rows="4" style="resize: none;" required></textarea>
                         <div class="invalid-feedback">Por favor, digite sua mensagem.</div>
                     </div>
-                
-                    <button type="submit" class="btn btn-primary mt-3">Enviar Mensagem</button>   
+                    <button type="button" class="btn btn-primary mt-3" onclick="EnviaFormContato()">Enviar Mensagem</button>
                 </form>
+                <!-- Mensagem de sucesso inicialmente oculta -->
+                <div id="successMessage" style="display: none;" class="alert alert-success">
+                    Obrigado! Sua mensagem foi enviada com sucesso.
+                </div>
             </div>
         </div>
     </div>
