@@ -26,7 +26,7 @@ function compileSass() {
 // Tarefa para iniciar o servidor de desenvolvimento
 function serve(done) {
   browser.init({
-    proxy: "http://starter.local.host/",
+    proxy: "http://tudodetexto.local.host/",
     notify: false
   });
   done();
