@@ -1,7 +1,7 @@
 {
-  "name": "tudodetexto",
+  "name": "starter",
   "version": "1.0.0",
-  "description": "Template Tudo de Texto Theme",
+  "description": "Template Starter Theme",
   "main": "index.js",
   "type": "module",
   "scripts": {

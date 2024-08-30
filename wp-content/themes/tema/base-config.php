@@ -1,5 +1,5 @@
 <?php 
-    $database = 'tudodetexto';
+    $database = 'starter';
     $usuario = 'root';
     $senha = '';
     $servidor = 'localhost';
